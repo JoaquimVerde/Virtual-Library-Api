@@ -1,0 +1,76 @@
+.book-item {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: 2%;
+    padding-left: 0rem;
+    justify-content: left;
+}
+#circle-book {
+    animation: App-logo-spin-2 infinite 5s linear;
+    max-width: 3rem;
+    margin-left: 2%;
+}
+#cloud-book {
+    height: 20vmin;
+    border-radius: 2rem;
+}
+.title-text {
+    font-family: Georgia;
+    font-style: oblique;
+    color: rgb(173, 96, 246);
+    font-size: 1.5rem;
+    margin-left: 3%;
+}
+#title {
+    display: flex;
+    flex-direction: row;  
+    align-items: center;  
+    margin-top: 3%;
+}
+#book-info {
+    background-color: aquamarine;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    border-radius: 2rem;
+    margin-left: 1.5rem;
+}
+.button{
+    border-radius: 2rem;
+}
+
+@keyframes App-logo-spin-2 {
+    0% {
+        transform: rotate(0deg);
+        
+    }
+    25% {
+        transform: rotate(30deg);
+    }
+    75% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+
+  }
+  .login {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+    margin-left: 2%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .login-form {
+    background-color: rgba(252, 250, 250, 0.935);
+    border-radius: 0.5rem;
+    font-style: oblique;
+    font-family: Georgia;
+  }
+  #book_cover {
+    max-width: 1.5rem;
+    padding-left: 1rem;
+  }
