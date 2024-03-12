@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
-import logo from "../images/logo2.png"
+import { useState, useEffect } from "react";
+import { Container, Row, Form } from "react-bootstrap";
+import logo from "../images/logo2.png";
 
+const UpdateBook = () => {
 
-
-const AddNewBook = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [year, setYear] = useState();
+    const [picture, setPicture] = useState("");
     const [error, setError] = useState("");
+    const id = sessionStorage.getItem("id");
 
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const route = "http://5.22.217.225:8081/api/v1/book/";
-        const options = {
-            method: "POST",
+
+    const handleSubmit = () => {
+
+        fetch(`http://5.22.217.225:8081/api/v1/book/${id}`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": sessionStorage.getItem("token"),
@@ -24,31 +24,34 @@ const AddNewBook = () => {
                 title: title,
                 description: description,
                 year: year,
-            }),
-        };
-
-        fetch(route, options)
-        .then((response) => {
-            console.log(response);
-            if (response.status !== 200) {
-            throw new Error("something went wrong");
-            }
-            return response.json();
+                book_cover: picture,
+            })
         })
-        .catch((error) => {
-            console.error(error);
-            setError("something went wrong:", error);
-        });
-        
-    };
+            .then((response) => {
+                console.log(response);
+                if (response.status !== 200) {
+                    throw new Error("something went wrong");
+                }
+                return response.json();
+            })
+            .catch((error) => {
+                console.error(error);
+                setError("something went wrong:", error);
+            });
+
+    }
+
+
 
     return (
+
         <Container>
             <div className="login">
                 <img id="cloud-book" src={logo} alt="library logo"></img>
+
                 <Row>
                     <Form className='login-form' onSubmit={handleSubmit}>
-                        <Form.Label> New Book</Form.Label>
+                        <Form.Label> Update Book</Form.Label>
                         <Form.Group>
                             <Form.Control
                                 id="title"
@@ -70,26 +73,30 @@ const AddNewBook = () => {
                         <Form.Group>
                             <Form.Control
                                 id="year"
-                                type="number"
+                                type="text"
                                 placeholder="Enter year"
                                 value={year}
                                 onChange={(e) => setYear(parseInt(e.target.value))}
                             />
                         </Form.Group>
-                        <button onClick={handleSubmit}>Submit</button>                                                
+                        <Form.Group>
+                            <Form.Control
+                                id="picture"
+                                type="text"
+                                placeholder="Enter picture"
+                                value={picture}
+                                onChange={(e) => setPicture(e.target.value)}
+                            />
+                        </Form.Group>
+                        <button id="button-update-profile" onClick={handleSubmit}>Submit</button>
                     </Form>
                 </Row>
-                {error.length > 0 && (
-                    <Row>
-                        <Col>{error !== "" ? <p> {error} </p> : null}</Col>
-                    </Row>
-                    )}
+
             </div>
         </Container>
     );
 
 
-
 }
 
-export default AddNewBook;
+export default UpdateBook;

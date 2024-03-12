@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import logo from "../images/logo2.png"
+import logo from "../images/logo2.png";
 
 const Register = () => {
 

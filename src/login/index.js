@@ -1,4 +1,4 @@
-import logo from "../images/logo2.png"
+import logo from "../images/logo2.png";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import React, { useState } from "react";
 
