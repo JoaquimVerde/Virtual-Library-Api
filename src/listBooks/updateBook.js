@@ -36,13 +36,13 @@ const UpdateBook = () => {
                 if (response.status !== 200) {
                     throw new Error("something went wrong");
                 }
-                return response.json();
+                return response.json();    
             })
             .catch((error) => {
                 console.error(error);
                 setError("something went wrong:", error);
             });
-            navigate("/list");
+            navigate("/list"); //should be in a ".then" between lines 40-41 so it can show the error if it occurs
 
     }
 
