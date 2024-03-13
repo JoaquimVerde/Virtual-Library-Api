@@ -10,6 +10,10 @@ const Register = () => {
     const [error, setError] = useState("");
     const [token, setToken] = useState("");
 
+    const refreshPage = () => {
+        window.location.reload(false);
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const route = "http://5.22.217.225:8081/api/v1/auth/register";
@@ -26,28 +30,30 @@ const Register = () => {
         };
 
         fetch(route, options)
-        .then((response) => {
-            if (response.status !== 201) {
-            throw new Error("Something went wrong");
-            }
-            return response.json();
-        })
-        .then((jsonData) => {
-            setToken(jsonData.data.token);
-            sessionStorage.setItem('token', jsonData.data.token);
-            setError("");
-        })
-        .catch((error) => {
-            console.error(error);
-            setToken("");
-            setError("something went wrong");
-        });
+            .then((response) => {
+                if (response.status !== 201) {
+                    throw new Error("Something went wrong");
+                }
+                return response.json();
+            })
+            .then((jsonData) => {
+                setToken(jsonData.data.token);
+                sessionStorage.setItem('token', jsonData.data.token);
+                refreshPage();
+                setError("");
+            })
+            .catch((error) => {
+                console.error(error);
+                setToken("");
+                setError("something went wrong");
+            });
+            
     };
 
     return (
         <Container>
             <div className="login">
-            <img id="cloud-book" src={logo} alt="library logo"></img>
+                <img id="cloud-book" src={logo} alt="library logo"></img>
                 <Row>
                     <Form className='login-form' onSubmit={handleSubmit}>
                         <Form.Label> Register:</Form.Label>
@@ -92,8 +98,8 @@ const Register = () => {
         </Container>
     );
 
-    
-    
+
+
 }
 
 export default Register;

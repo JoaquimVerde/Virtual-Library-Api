@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import logo from "../images/logo2.png"
+import logo from "../images/logo2.png";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 
@@ -9,6 +12,8 @@ const AddNewBook = () => {
     const [description, setDescription] = useState("");
     const [year, setYear] = useState();
     const [error, setError] = useState("");
+    const navigate = useNavigate();
+
 
     
     const handleSubmit = async (event) => {
@@ -39,6 +44,7 @@ const AddNewBook = () => {
             console.error(error);
             setError("something went wrong:", error);
         });
+        navigate("/list");
         
     };
 

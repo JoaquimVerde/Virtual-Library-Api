@@ -11,12 +11,9 @@ const Login = () => {
     const [token, setToken] = useState("");
 
 
-
-
     const refreshPage = () => {
         window.location.reload(false);
     }
-
 
 
     const handleSubmit = (event) => {
@@ -51,6 +48,7 @@ const Login = () => {
                 setToken("");
                 setError("incorrect login");
             });
+            
     };
 
 

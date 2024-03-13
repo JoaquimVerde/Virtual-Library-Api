@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container, Row, Form } from "react-bootstrap";
 import logo from "../images/logo2.png";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -9,6 +11,8 @@ const UpdateProfile = () => {
     const [email, setEmail] = useState("");
     const [picture, setPicture] = useState("");
     const [error, setError] = useState("");
+    const navigate = useNavigate();
+
 
 
 
@@ -37,6 +41,7 @@ const UpdateProfile = () => {
                 console.error(error);
                 setError("something went wrong:", error);
             });
+            navigate("/profile");
 
     }
 

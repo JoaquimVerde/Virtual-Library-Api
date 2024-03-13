@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Form } from "react-bootstrap";
 import logo from "../images/logo2.png";
+import { useNavigate } from "react-router-dom";
+
 
 const UpdateBook = () => {
 
@@ -10,6 +12,8 @@ const UpdateBook = () => {
     const [picture, setPicture] = useState("");
     const [error, setError] = useState("");
     const id = sessionStorage.getItem("id");
+    const navigate = useNavigate();
+
 
 
     const handleSubmit = () => {
@@ -38,6 +42,7 @@ const UpdateBook = () => {
                 console.error(error);
                 setError("something went wrong:", error);
             });
+            navigate("/list");
 
     }
 
