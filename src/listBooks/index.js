@@ -65,7 +65,7 @@ const GetBooks = () => {
             <button disabled={sessionStorage.length < 1} className="button" onClick={() => deleteItem(item.id)}>delete</button>
             <img id="book_cover" src={item.book_cover} alt="book cover" />
             <li id="book-info">Id: {item.id} - Title: {item.title} - Year: {item.year} - User: {item.user.name}</li>
-            <button className="button" onClick={() => updateBook(item.id)}>Update</button>
+            <button disabled={sessionStorage.length < 1} className="button" onClick={() => updateBook(item.id)}>Update</button>
           </ul>
         ))}
       </div>
