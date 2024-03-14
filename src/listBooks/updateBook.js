@@ -42,7 +42,7 @@ const UpdateBook = () => {
                 console.error(error);
                 setError("something went wrong:", error);
             });
-            navigate("/list"); //should be in a ".then" between lines 40-41 so it can show the error if it occurs
+            navigate("/list");
 
     }
 
